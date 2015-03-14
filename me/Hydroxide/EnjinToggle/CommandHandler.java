@@ -27,34 +27,41 @@ public class CommandHandler implements CommandExecutor {
 		
 		if(label.equalsIgnoreCase("admin") && player.hasPermission("admin.toggle")) {
 			if(args.length == 0) {
-				player.sendMessage(ChatColor.RED + "Please specify args.");
+				player.sendMessage(ChatColor.GOLD + "EnjinToggle Commands:");
+				player.sendMessage(ChatColor.GRAY + "|" + ChatColor.GREEN + " /admin on");
+				player.sendMessage(ChatColor.GRAY + "|" + ChatColor.GREEN + " /admin off");
+				player.sendMessage(ChatColor.GRAY + "|" + ChatColor.GREEN + " /admin reload");
 				return false;
 			}	
 			if(args.length == 1) {
 				if(args[0].equalsIgnoreCase("on")) {
 					if(!(toggled.contains(player))) {
-					String coloredOn = plugin.getConfig().getString("toggleOnMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
+					String coloredOn = plugin.getConfig().getString("toggleOnMessage").replaceAll("(&([a-f0-9k-r]))", "\u00A7$2");
 					player.sendMessage(coloredOn);
 					Main.perms.playerAdd(player, plugin.getConfig().getString("adminPermission"));
 					toggled.add(player);
 					return false;
 					} else {
-						String alreadyOn = plugin.getConfig().getString("alreadyToggledMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
+						String alreadyOn = plugin.getConfig().getString("alreadyToggledMessage").replaceAll("(&([a-f0-9k-r]))", "\u00A7$2");
 						player.sendMessage(alreadyOn);
 						return false;
 					}
 				} else if(args[0].equalsIgnoreCase("off")) { 
 					if(toggled.contains(player)) {
-					String coloredOff = plugin.getConfig().getString("toggleOffMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
+					String coloredOff = plugin.getConfig().getString("toggleOffMessage").replaceAll("(&([a-f0-9k-r]))", "\u00A7$2");
 					player.sendMessage(coloredOff);
 					Main.perms.playerRemove(player, plugin.getConfig().getString("adminPermission"));
 					toggled.remove(player);
 					return false;
 					} else if(!(toggled.contains(player))) {
-						String alreadyOff = plugin.getConfig().getString("notToggledMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
+						String alreadyOff = plugin.getConfig().getString("notToggledMessage").replaceAll("(&([a-f0-9k-r]))", "\u00A7$2");
 						player.sendMessage(alreadyOff);
 						return false;
 					}
+				} else if(args[0].equalsIgnoreCase("reload")) {
+					plugin.reloadConfig();
+					String reloadedConfig = plugin.getConfig().getString("reloadedConfigMessage").replaceAll("(&([a-f0-9k-r]))", "\u00A7$2");
+					player.sendMessage(reloadedConfig);
 				}
 			}
 	  }

@@ -20,6 +20,7 @@ public class Main extends JavaPlugin {
 		getConfig().addDefault("toggleOffMessage", "&8[&aEnjinToggle&8] &cAdmin Mode has been toggled off.");
 		getConfig().addDefault("alreadyToggledMessage", "&8[&aEnjinToggle&8] &4Admin Mode is already on!");
 		getConfig().addDefault("notToggledMessage", "&8[&aEnjinToggle&8] &4Admin Mode is already off!");
+		getConfig().addDefault("reloadedConfigMessage", "&8[&aEnjinToggle&8] &eConfig reloaded.");
 		saveDefaultConfig();
 		this.getConfig().options().copyDefaults(true);
 		saveConfig();
