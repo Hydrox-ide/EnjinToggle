@@ -51,7 +51,7 @@ public class CommandHandler implements CommandExecutor {
 					toggled.remove(player);
 					return false;
 					} else if(!(toggled.contains(player))) {
-						String alreadyOff = plugin.getConfig().getString("toggleOffMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
+						String alreadyOff = plugin.getConfig().getString("notToggledMessage").replaceAll("(&([a-f0-9]))", "\u00A7$2");
 						player.sendMessage(alreadyOff);
 						return false;
 					}
