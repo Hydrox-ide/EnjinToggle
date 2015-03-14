@@ -1,0 +1,6 @@
+name: EnjinToggle
+version: 1.0
+main: me.Hydroxide.EnjinToggle.Main
+commands:
+  admin:
+    permission: admin.toggle
